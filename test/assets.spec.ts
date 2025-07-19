@@ -35,3 +35,23 @@ describe("assets", () => {
     expect(uniqueEmoji.size, "emoji has duplicate art").toBe(emoji.length);
   });
 });
+
+describe("length", () => {
+  it.each(anime)("anime art should have correct length", (art) => {
+    expect.assertions(2);
+    expect(art.text.length, `${anime.indexOf(art)} has no content!`).toBeGreaterThan(0);
+    expect(art.text.length, `${anime.indexOf(art)} has too much content!`).toBeLessThanOrEqual(3500);
+  });
+
+  it.each(cats)("cats art should have correct length", (art) => {
+    expect.assertions(2);
+    expect(art.text.length, `${cats.indexOf(art)} has no content!`).toBeGreaterThan(0);
+    expect(art.text.length, `${cats.indexOf(art)} has too much content!`).toBeLessThanOrEqual(3500);
+  });
+
+  it.each(emoji)("emoji art should have correct length", (art) => {
+    expect.assertions(2);
+    expect(art.text.length, `${emoji.indexOf(art)} has no content!`).toBeGreaterThan(0);
+    expect(art.text.length, `${emoji.indexOf(art)} has too much content!`).toBeLessThanOrEqual(3500);
+  });
+});
