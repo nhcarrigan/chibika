@@ -1,6 +1,6 @@
 {
   "name": "chibika",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A bot that shares ASCII art.",
   "main": "index.js",
   "type": "module",
