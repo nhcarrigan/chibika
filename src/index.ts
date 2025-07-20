@@ -10,6 +10,7 @@ import {
   GatewayIntentBits,
 } from "discord.js";
 import { chatInputInteractionCreate } from "./events/interactionCreate.js";
+import { instantiateServer } from "./server/serve.js";
 import { logger } from "./utils/logger.js";
 
 const chibika = new Client({
@@ -38,3 +39,4 @@ chibika.on(Events.InteractionCreate, (interaction) => {
 });
 
 await chibika.login(process.env.DISCORD_TOKEN);
+await instantiateServer();
