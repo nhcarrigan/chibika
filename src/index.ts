@@ -39,4 +39,4 @@ chibika.on(Events.InteractionCreate, (interaction) => {
 });
 
 await chibika.login(process.env.DISCORD_TOKEN);
-await instantiateServer();
+instantiateServer();
