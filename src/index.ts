@@ -4,6 +4,7 @@
  * @author Naomi Carrigan
  */
 
+import { DiscordAnalytics } from "@nhcarrigan/discord-analytics";
 import {
   Client,
   Events,
@@ -19,14 +20,18 @@ const chibika = new Client({
   ],
 });
 
+const analytics = new DiscordAnalytics(chibika, logger);
+
 chibika.once(Events.ClientReady, () => {
   void logger.log(
     "debug",
     `Logged in as ${chibika.user?.username ?? "unknown"}`,
   );
+  analytics.startCron();
 });
 
 chibika.on(Events.InteractionCreate, (interaction) => {
+  void analytics.logGatewayEvent(Events.InteractionCreate, { ...interaction });
   if (interaction.isChatInputCommand()) {
     if (!interaction.inCachedGuild()) {
       void interaction.reply({
